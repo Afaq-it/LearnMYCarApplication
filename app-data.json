@@ -1,0 +1,120 @@
+{
+  "imageTagsMakes": [
+    {
+      "id": "002a4788-3ab0-46f0-9d22-bd8abfec56f2",
+      "name": "Audi",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 0
+    },
+    {
+      "id": "84808e5d-5bcb-407d-97cc-283938c13508",
+      "name": "BMW",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 0
+    },
+    {
+      "id": "05a89dcc-9a45-4ec7-b178-ef5b5ee302b9",
+      "name": "Fiat",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 0
+    },
+    {
+      "id": "664e748e-3de7-47b5-a3b2-a70386a3000b",
+      "name": "Ford",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 55
+    },
+    {
+      "id": "5dc69850-9079-4642-9eef-f4d521600fc8",
+      "name": "Honda",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 0
+    },
+    {
+      "id": "75fd84ea-7f71-4cf9-b24d-f80a3e1eb467",
+      "name": "Hyundai",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 0
+    },
+    {
+      "id": "9d82c012-5522-4398-be1b-2cda564f96ca",
+      "name": "Nissan",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 0
+    },
+    {
+      "id": "5870f6c8-7e56-41a3-bf7f-eaaea49a49f5",
+      "name": "Peugeot",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 0
+    },
+    {
+      "id": "d2b5dc3a-2f97-40bc-a074-5e5fff97e47b",
+      "name": "Tesla",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 0
+    },
+    {
+      "id": "acac23e0-e1a2-4106-9fa6-bc636ab0710b",
+      "name": "Toyota",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 0
+    },
+    {
+      "id": "e6c7fc2b-bebb-4f50-9303-77926db7ddd3",
+      "name": "Vauxhall",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 0
+    },
+    {
+      "id": "5c6bbac7-5f56-40fb-b032-ee130d933118",
+      "name": "Volkswagen",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 68
+    }
+  ],
+  "imageTagsVwModels": [
+    {
+      "id": "05397670-f998-49a0-92ce-4ef4f0f457ed",
+      "name": "Golf",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 52
+    },
+    {
+      "id": "27e530a9-d13b-46b4-a01c-16e3809a2de6",
+      "name": "Polo",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 74
+    }
+  ],
+  "imageTagsFordModels": [
+    {
+      "id": "7bf0164b-3652-4d3b-b741-9d50e1bda69f",
+      "name": "Fiesta",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 92
+    },
+    {
+      "id": "5d33fb4e-483c-4852-99a9-3df72dd2750a",
+      "name": "Focus",
+      "description": null,
+      "type": "Regular",
+      "imageCount": 107
+    }
+  ]
+}
