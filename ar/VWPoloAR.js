@@ -26,6 +26,10 @@ export default class VWPoloAR extends Component {
     this._onAnchorFound = this._onAnchorFound.bind(this);
   }
 
+  _onAnchorFound() {
+    this.setState({ coachText: '' });
+  }
+
   render() {
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized}>
@@ -34,10 +38,11 @@ export default class VWPoloAR extends Component {
             text={this.state.coachText}
             width={2}
             height={3}
-            transformBehaviors={'billboard'}
+            transformBehaviors={'billboard'} //could cause issues - previously caused app to crash
             textAlign={'Center'}
             position={[0, 0, -3]}
             style={styles.coachTextStyle}
+            visible={this.state.coachText === '' ? false : true}
           />
         </ViroCamera>
         {/* indicators marker */}
@@ -50,7 +55,7 @@ export default class VWPoloAR extends Component {
               source={require('./res/objects/indicators.obj')}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
-              scale={[0.015, 0.01, 0.015]}
+              scale={[0.04, 0.015, 0.04]}
               type="OBJ"
             />
           </ViroNode>
@@ -65,7 +70,7 @@ export default class VWPoloAR extends Component {
               source={require('./res/objects/airbag.obj')}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
-              scale={[0.015, 0.01, 0.015]}
+              scale={[0.04, 0.015, 0.04]}
               type="OBJ"
             />
           </ViroNode>
@@ -74,13 +79,13 @@ export default class VWPoloAR extends Component {
         <ViroARImageMarker
           target={'hazardMarker'}
           onAnchorFound={this._onAnchorFound}>
-          <ViroNode position={[-0.5, -5, -0.1]}>
+          <ViroNode position={[-0.5, -7, -0.1]}>
             <ViroAmbientLight color={'#aaaaaa'} influenceBitMask={1} />
             <Viro3DObject
               source={require('./res/objects/hazard.obj')}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
-              scale={[0.015, 0.01, 0.015]}
+              scale={[0.04, 0.015, 0.04]}
               type="OBJ"
             />
           </ViroNode>
@@ -89,13 +94,13 @@ export default class VWPoloAR extends Component {
         <ViroARImageMarker
           target={'hornMarker'}
           onAnchorFound={this._onAnchorFound}>
-          <ViroNode position={[-1, -5, -0.1]}>
+          <ViroNode position={[-1, -6, -0.1]}>
             <ViroAmbientLight color={'#aaaaaa'} influenceBitMask={1} />
             <Viro3DObject
               source={require('./res/objects/horn.obj')}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
-              scale={[0.015, 0.01, 0.015]}
+              scale={[0.04, 0.015, 0.04]}
               type="OBJ"
             />
           </ViroNode>
@@ -104,13 +109,13 @@ export default class VWPoloAR extends Component {
         <ViroARImageMarker
           target={'wipersMarker'}
           onAnchorFound={this._onAnchorFound}>
-          <ViroNode position={[-0.5, -3, -0.1]}>
+          <ViroNode position={[-0.6, -3.5, -0.1]}>
             <ViroAmbientLight color={'#aaaaaa'} influenceBitMask={1} />
             <Viro3DObject
               source={require('./res/objects/wipers.obj')}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
-              scale={[0.015, 0.01, 0.015]}
+              scale={[0.04, 0.015, 0.04]}
               type="OBJ"
             />
           </ViroNode>
@@ -118,37 +123,31 @@ export default class VWPoloAR extends Component {
       </ViroARScene>
     );
   }
-
-  _onAnchorFound() {
-    this.setState({
-      coachText: '',
-    });
-  }
 }
 
 ViroARTrackingTargets.createTargets({
   indicatorsMarker: {
-    source: require('./res/focus-markers/indicator-marker.jpg'),
+    source: require('./res/polo-markers/indicator-marker.jpg'),
     orientation: 'Up',
     physicalWidth: 0.1,
   },
   wipersMarker: {
-    source: require('./res/focus-markers/wipers-marker.jpg'),
+    source: require('./res/polo-markers/wipers-marker.jpg'),
     orientation: 'Up',
     physicalWidth: 0.05,
   },
   airbagMarker: {
-    source: require('./res/focus-markers/airbag-marker.jpg'),
+    source: require('./res/polo-markers/airbag-marker.jpg'),
     orientation: 'Up',
     physicalWidth: 0.1,
   },
   hazardMarker: {
-    source: require('./res/focus-markers/hazard-marker.jpg'),
+    source: require('./res/polo-markers/hazard-marker.jpg'),
     orientation: 'Up',
-    physicalWidth: 0.1,
+    physicalWidth: 0.05,
   },
   hornMarker: {
-    source: require('./res/focus-markers/horn-marker.jpg'),
+    source: require('./res/polo-markers/horn-marker.jpg'),
     orientation: 'Up',
     physicalWidth: 0.1,
   },

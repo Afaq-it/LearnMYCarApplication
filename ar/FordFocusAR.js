@@ -26,6 +26,10 @@ export default class FordFocusAR extends Component {
     this._onAnchorFound = this._onAnchorFound.bind(this);
   }
 
+  _onAnchorFound() {
+    this.setState({ coachText: '' });
+  }
+
   render() {
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized}>
@@ -34,10 +38,11 @@ export default class FordFocusAR extends Component {
             text={this.state.coachText}
             width={2}
             height={3}
-            transformBehaviors={'billboard'}
+            transformBehaviors={'billboard'} //could cause issues - previously caused app to crash
             textAlign={'Center'}
             position={[0, 0, -3]}
             style={styles.coachTextStyle}
+            visible={this.state.coachText === '' ? false : true}
           />
         </ViroCamera>
         {/* indicators marker */}
@@ -50,7 +55,7 @@ export default class FordFocusAR extends Component {
               source={require('./res/objects/indicators.obj')}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
-              scale={[0.015, 0.01, 0.015]}
+              scale={[0.04, 0.015, 0.04]}
               type="OBJ"
             />
           </ViroNode>
@@ -65,7 +70,7 @@ export default class FordFocusAR extends Component {
               source={require('./res/objects/airbag.obj')}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
-              scale={[0.015, 0.01, 0.015]}
+              scale={[0.04, 0.015, 0.04]}
               type="OBJ"
             />
           </ViroNode>
@@ -80,7 +85,7 @@ export default class FordFocusAR extends Component {
               source={require('./res/objects/hazard.obj')}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
-              scale={[0.015, 0.01, 0.015]}
+              scale={[0.04, 0.015, 0.04]}
               type="OBJ"
             />
           </ViroNode>
@@ -95,7 +100,7 @@ export default class FordFocusAR extends Component {
               source={require('./res/objects/horn.obj')}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
-              scale={[0.015, 0.01, 0.015]}
+              scale={[0.04, 0.015, 0.04]}
               type="OBJ"
             />
           </ViroNode>
@@ -110,19 +115,13 @@ export default class FordFocusAR extends Component {
               source={require('./res/objects/wipers.obj')}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
-              scale={[0.015, 0.01, 0.015]}
+              scale={[0.04, 0.015, 0.04]}
               type="OBJ"
             />
           </ViroNode>
         </ViroARImageMarker>
       </ViroARScene>
     );
-  }
-
-  _onAnchorFound() {
-    this.setState({
-      coachText: '',
-    });
   }
 }
 

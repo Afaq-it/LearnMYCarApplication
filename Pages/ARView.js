@@ -3,9 +3,8 @@ import { Text, View, StyleSheet } from 'react-native';
 import { ViroARSceneNavigator } from 'react-viro';
 
 export default function ARView({ route, navigation }) {
-  /* const { model } = route.params; */
+  const { model } = route.params;
 
-  const model = 'Focus';
   const InitialARScene = getInitialARScene();
 
   function getInitialARScene() {
