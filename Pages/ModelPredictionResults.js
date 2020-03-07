@@ -7,7 +7,6 @@ export default function ModelPredictionResults({ route, navigation }) {
   const { prediction } = route.params;
   const { previousPrediction } = route.params;
 
-  console.log('imageUrl = ' + imageUrl);
   return (
     <View
       style={{

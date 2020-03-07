@@ -12,7 +12,6 @@ import Pdf from 'react-native-pdf';
 export default function PDFView({ route, navigation }) {
   const { model } = route.params;
   const sourcePdf = getSourcePdf();
-  console.log(sourcePdf);
 
   function getSourcePdf() {
     if (model === 'Focus') {

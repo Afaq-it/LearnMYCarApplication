@@ -11,18 +11,11 @@ import ListCard from 'Components/ListCard';
 import FinalProcessing from 'Pages/FinalProcessing';
 
 export default function ImageUploadProcessing({ route, navigation }) {
-  console.log(Data.imageTagsMakes[0].name);
   const { currentChoice } = route.params;
   const { imageUrl } = route.params;
   const { vehicleMake } = route.params;
 
-  console.log(currentChoice + ' = currentChoice');
-  console.log(imageUrl + ' = imageUrl');
-  console.log(vehicleMake + ' = vehicleMake');
-
   const ListData = getData();
-
-  console.log(ListData);
 
   function getData() {
     if (currentChoice === false) {

@@ -9,13 +9,9 @@ export default function FinalProcessing(
   imageUrl,
   navigation,
 ) {
-  console.log('UploadProcessing --- currentChoice ==> ' + currentChoice);
-  console.log('UploadProcessing --- imageUrl ==> ' + imageUrl);
-  console.log('UploadProcessing --- key ==> ' + key);
   if (currentChoice === false) {
     AzureConnection.uploadImageForTrainingMake(key, imageUrl, navigation);
   } else if (currentChoice === true) {
-    console.log('UploadProcessing --- vehicleMake ==> ' + vehicleMake);
     if (vehicleMake === 'Volkswagen') {
       AzureConnection.uploadImageForTrainingVwModel(key, imageUrl, navigation);
     } else if (vehicleMake === 'Ford') {

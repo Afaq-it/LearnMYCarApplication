@@ -18,13 +18,10 @@ class Confirmation extends Component {
     this.setState({ isModalVisible: visible });
   }
   setCurrentState(predictionString) {
-    console.log(predictionString);
-    console.log(this.state.currentChoice);
     if (predictionString === 'Ford' || predictionString === 'Volkswagen') {
       null;
     } else {
       this.setState({ currentChoice: true === true });
-      console.log('this is happening');
     }
   }
 
@@ -32,8 +29,6 @@ class Confirmation extends Component {
     const predictionString = this.props.prediction;
     const imageUrl = this.props.imageUrl;
     const navigation = this.props.navig;
-    console.log('ImageUrl = ' + imageUrl);
-    console.log(imageUrl);
     return (
       <View style={styles.mainView}>
         {/* MODAL START */}
@@ -77,7 +72,6 @@ class Confirmation extends Component {
                     activeOpacity={0.5}
                     onPress={() => {
                       this.setisModalVisible(!this.state.isModalVisible);
-                      console.log(this.state.currentChoice);
                       navigation.navigate('UploadUserChoice', {
                         currentChoice: this.state.currentChoice,
                         vehicleMake: predictionString,

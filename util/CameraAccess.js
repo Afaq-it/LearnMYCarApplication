@@ -41,10 +41,8 @@ export default class CameraAccess extends Component {
           buttonPositive: 'Ok',
         },
       );
-      console.log('Permission status = ' + status);
       if (status === 'granted') {
         this.setState({ hasPermission: status === 'granted' }); // to set as 'true'
-        console.log('For fucks sake!');
       } else {
         this.setState({ hasPermission: status === 'granted' }); // to set as 'false'
       }
@@ -55,7 +53,6 @@ export default class CameraAccess extends Component {
 
   render() {
     const { hasPermission } = this.state;
-    console.log(hasPermission);
     if (hasPermission === null) {
       return (
         <View>
@@ -131,11 +128,9 @@ export default class CameraAccess extends Component {
   }
 
   _handleclick() {
-    console.log('makePredicted = ' + this.props.makePredicted);
     if (!this.props.makePredicted) {
       this.setState({ processing: true });
       CameraFunctions.takePictureMake(this.props.navig, this.camera);
-      console.log('takePictureMake');
     } else {
       this.setState({ processing: true });
       CameraFunctions.takePictureModel(
@@ -143,7 +138,6 @@ export default class CameraAccess extends Component {
         this.props.vehicleMake,
         this.camera,
       );
-      console.log('takePictureModel');
     }
   }
 }

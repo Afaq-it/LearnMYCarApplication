@@ -32,7 +32,6 @@ export default function ARPDFOptions({ route, navigation }) {
           activeOpacity={0.5}
           onPress={() => {
             navigation.navigate('ARView', { model: predictionMake });
-            console.log('this works');
           }}>
           <Image
             source={require('assets/ar-icon.png')}
@@ -46,7 +45,6 @@ export default function ARPDFOptions({ route, navigation }) {
           activeOpacity={0.5}
           onPress={() => {
             navigation.navigate('PDFView', { model: predictionMake });
-            console.log('this works');
           }}>
           <Image
             source={require('assets/pdf-icon.png')}
@@ -60,7 +58,6 @@ export default function ARPDFOptions({ route, navigation }) {
         activeOpacity={0.5}
         onPress={() => {
           navigation.navigate('MakePrediction');
-          console.log('this works');
         }}>
         <Text style={{ fontWeight: 'bold', color: '#fff' }}>
           SCAN A NEW VEHICLE

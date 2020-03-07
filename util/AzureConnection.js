@@ -26,9 +26,7 @@ const predi_url =
 
 async function handleAzure(imageData, navigation) {
   let response1 = await imgurImageUpload(imageData);
-  console.log(response1.data.link);
   let response2 = await azurePrediction(response1.data.link, predi_url);
-  console.log(response2);
   navigation.navigate('MakePredictionResults', {
     imageUrl: response1.data.link,
     prediction: response2.predictions[0].tagName,
@@ -89,10 +87,7 @@ const predi_url_Ford =
 async function handleAzureModels(imageData, vehicleMake, navigation) {
   if (vehicleMake === 'Ford') {
     let response1 = await imgurImageUpload(imageData);
-    console.log(response1.data.link);
-    console.log(predi_url_Ford);
     let response2 = await azurePrediction(response1.data.link, predi_url_Ford);
-    console.log(response2);
     navigation.navigate('ModelPredictionResults', {
       imageUrl: response1.data.link,
       prediction: response2.predictions[0].tagName,
@@ -100,10 +95,7 @@ async function handleAzureModels(imageData, vehicleMake, navigation) {
     });
   } else if (vehicleMake === 'Volkswagen') {
     let response1 = await imgurImageUpload(imageData);
-    console.log(response1.data.link);
-    console.log(predi_url_VW);
     let response2 = await azurePrediction(response1.data.link, predi_url_VW);
-    console.log(response2);
     navigation.navigate('ModelPredictionResults', {
       imageUrl: response1.data.link,
       prediction: response2.predictions[0].tagName,
@@ -126,7 +118,6 @@ function getImageTags() {
   })
     .then(response => response.json())
     .then(responseJson => {
-      console.log(responseJson);
       uploadImageForTraining(responseJson[0].id, responseJson[1].id);
     })
     .catch(error => {
@@ -140,8 +131,6 @@ const uploadUrlMake =
   PROJECT_ID +
   '/images/urls';
 async function uploadImageForTrainingMake(tagKey, imageUrl) {
-  console.log('uploadImageForTrainingMake');
-  console.log('This key is = ' + tagKey);
   fetch(uploadUrlMake, {
     method: 'POST',
     headers: {
@@ -158,9 +147,6 @@ async function uploadImageForTrainingMake(tagKey, imageUrl) {
     }),
   })
     .then(response => response.json())
-    .then(responseJson => {
-      console.log(responseJson);
-    })
     .catch(error => {
       console.error(error);
     });
@@ -172,8 +158,6 @@ const uploadUrlFordModel =
   PROJECT_ID_3 +
   '/images/urls';
 async function uploadImageForTrainingFordModel(tagKey, imageUrl) {
-  console.log('uploadImageForTrainingFordModel');
-  console.log('This key is = ' + tagKey);
   fetch(uploadUrlFordModel, {
     method: 'POST',
     headers: {
@@ -190,9 +174,7 @@ async function uploadImageForTrainingFordModel(tagKey, imageUrl) {
     }),
   })
     .then(response => response.json())
-    .then(responseJson => {
-      console.log(responseJson);
-    })
+    .then(responseJson => {})
     .catch(error => {
       console.error(error);
     });
@@ -204,8 +186,6 @@ const uploadUrlVwModel =
   PROJECT_ID_2 +
   '/images/urls';
 async function uploadImageForTrainingVwModel(tagKey, imageUrl) {
-  console.log('uploadImageForTrainingVwModel');
-  console.log('This key is = ' + tagKey);
   fetch(uploadUrlVwModel, {
     method: 'POST',
     headers: {
@@ -222,9 +202,7 @@ async function uploadImageForTrainingVwModel(tagKey, imageUrl) {
     }),
   })
     .then(response => response.json())
-    .then(responseJson => {
-      console.log(responseJson);
-    })
+    .then(responseJson => {})
     .catch(error => {
       console.error(error);
     });
