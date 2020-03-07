@@ -3,11 +3,8 @@ import { StyleSheet, TouchableOpacity, Image, View, Text } from 'react-native';
 import logo from 'assets/icon.png';
 
 export default function ARPDFOptions({ route, navigation }) {
-  /*  const { predictionMake } = route.params;
-  const { previousPrediction } = route.params; */
-
-  const predictionMake = 'Focus';
-  const previousPrediction = 'Ford';
+  const { predictionMake } = route.params;
+  const { previousPrediction } = route.params;
 
   return (
     <View style={styles.viewOne}>
@@ -34,7 +31,7 @@ export default function ARPDFOptions({ route, navigation }) {
           style={styles.buttonViewMain}
           activeOpacity={0.5}
           onPress={() => {
-            navigation.navigate('ARView');
+            navigation.navigate('ARView', { model: predictionMake });
             console.log('this works');
           }}>
           <Image

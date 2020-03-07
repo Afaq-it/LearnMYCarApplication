@@ -1,0 +1,170 @@
+'use strict';
+
+import React, { Component } from 'react';
+
+import { StyleSheet } from 'react-native';
+
+import {
+  ViroARScene,
+  ViroText,
+  ViroConstants,
+  Viro3DObject,
+  ViroAmbientLight,
+  ViroARTrackingTargets,
+  ViroARImageMarker,
+  ViroCamera,
+  ViroNode,
+} from 'react-viro';
+
+export default class VWPoloAR extends Component {
+  constructor() {
+    super();
+    this.state = {
+      coachText:
+        'Slowly scan your steering wheel and middle console to see features ... \n \n \n Turn the device landscape for a better experience ...',
+    };
+    this._onAnchorFound = this._onAnchorFound.bind(this);
+  }
+
+  _onAnchorFound() {
+    this.setState({ coachText: '' });
+  }
+
+  render() {
+    return (
+      <ViroARScene onTrackingUpdated={this._onInitialized}>
+        <ViroCamera active={true}>
+          <ViroText
+            text={this.state.coachText}
+            width={2}
+            height={3}
+            transformBehaviors={'billboard'} //could cause issues - previously caused app to crash
+            textAlign={'Center'}
+            position={[0, 0, -3]}
+            style={styles.coachTextStyle}
+            visible={this.state.coachText === '' ? false : true}
+          />
+        </ViroCamera>
+        {/* indicators marker */}
+        <ViroARImageMarker
+          target={'indicatorsMarker'}
+          onAnchorFound={this._onAnchorFound}>
+          <ViroNode position={[-0.5, -4, -0.1]}>
+            <ViroAmbientLight color={'#aaaaaa'} influenceBitMask={1} />
+            <Viro3DObject
+              source={require('./res/objects/indicators.obj')}
+              rotationPivot={[0, 0, 0]}
+              rotation={[-180, -10, -0.4]}
+              scale={[0.04, 0.015, 0.04]}
+              type="OBJ"
+            />
+          </ViroNode>
+        </ViroARImageMarker>
+        {/* airbag marker */}
+        <ViroARImageMarker
+          target={'airbagMarker'}
+          onAnchorFound={this._onAnchorFound}>
+          <ViroNode position={[0.25, -5, -0.1]}>
+            <ViroAmbientLight color={'#aaaaaa'} influenceBitMask={1} />
+            <Viro3DObject
+              source={require('./res/objects/airbag.obj')}
+              rotationPivot={[0, 0, 0]}
+              rotation={[-180, -10, -0.4]}
+              scale={[0.04, 0.015, 0.04]}
+              type="OBJ"
+            />
+          </ViroNode>
+        </ViroARImageMarker>
+        {/* hazard marker */}
+        <ViroARImageMarker
+          target={'hazardMarker'}
+          onAnchorFound={this._onAnchorFound}>
+          <ViroNode position={[-0.5, -7, -0.1]}>
+            <ViroAmbientLight color={'#aaaaaa'} influenceBitMask={1} />
+            <Viro3DObject
+              source={require('./res/objects/hazard.obj')}
+              rotationPivot={[0, 0, 0]}
+              rotation={[-180, -10, -0.4]}
+              scale={[0.04, 0.015, 0.04]}
+              type="OBJ"
+            />
+          </ViroNode>
+        </ViroARImageMarker>
+        {/* horn marker */}
+        <ViroARImageMarker
+          target={'hornMarker'}
+          onAnchorFound={this._onAnchorFound}>
+          <ViroNode position={[-1, -6, -0.1]}>
+            <ViroAmbientLight color={'#aaaaaa'} influenceBitMask={1} />
+            <Viro3DObject
+              source={require('./res/objects/horn.obj')}
+              rotationPivot={[0, 0, 0]}
+              rotation={[-180, -10, -0.4]}
+              scale={[0.04, 0.015, 0.04]}
+              type="OBJ"
+            />
+          </ViroNode>
+        </ViroARImageMarker>
+        {/* wipers marker */}
+        <ViroARImageMarker
+          target={'wipersMarker'}
+          onAnchorFound={this._onAnchorFound}>
+          <ViroNode position={[-0.6, -3.5, -0.1]}>
+            <ViroAmbientLight color={'#aaaaaa'} influenceBitMask={1} />
+            <Viro3DObject
+              source={require('./res/objects/wipers.obj')}
+              rotationPivot={[0, 0, 0]}
+              rotation={[-180, -10, -0.4]}
+              scale={[0.04, 0.015, 0.04]}
+              type="OBJ"
+            />
+          </ViroNode>
+        </ViroARImageMarker>
+      </ViroARScene>
+    );
+  }
+}
+
+ViroARTrackingTargets.createTargets({
+  indicatorsMarker: {
+    source: require('./res/polo-markers/indicator-marker.jpg'),
+    orientation: 'Up',
+    physicalWidth: 0.1,
+  },
+  wipersMarker: {
+    source: require('./res/polo-markers/wipers-marker.jpg'),
+    orientation: 'Up',
+    physicalWidth: 0.05,
+  },
+  airbagMarker: {
+    source: require('./res/polo-markers/airbag-marker.jpg'),
+    orientation: 'Up',
+    physicalWidth: 0.1,
+  },
+  hazardMarker: {
+    source: require('./res/polo-markers/hazard-marker.jpg'),
+    orientation: 'Up',
+    physicalWidth: 0.05,
+  },
+  hornMarker: {
+    source: require('./res/polo-markers/horn-marker.jpg'),
+    orientation: 'Up',
+    physicalWidth: 0.1,
+  },
+});
+
+var styles = StyleSheet.create({
+  helloWorldTextStyle: {
+    fontSize: 30,
+    color: '#ffffff',
+    textAlignVertical: 'center',
+    textAlign: 'center',
+  },
+  coachTextStyle: {
+    color: '#ffffff',
+    textAlignVertical: 'center',
+    textAlign: 'center',
+  },
+});
+
+module.exports = VWPoloAR;

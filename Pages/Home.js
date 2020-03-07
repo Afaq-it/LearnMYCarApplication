@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingTop: 8,
   },
   footerSpace: {
     flex: 1,
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 22,
     color: '#3A88E9',
     padding: 50,
   },

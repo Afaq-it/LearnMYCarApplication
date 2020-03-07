@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-end',
+    padding: 10,
   },
   timerView: {
     flex: 1,

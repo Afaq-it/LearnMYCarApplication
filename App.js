@@ -23,7 +23,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar hidden={true} />
-      <PageStack.Navigator initialRouteName="ARPDFOptions" headerMode="none">
+      <PageStack.Navigator initialRouteName="Home" headerMode="none">
         <PageStack.Screen name="Home" component={Home} />
         <PageStack.Screen name="MakePrediction" component={MakePrediction} />
         <PageStack.Screen
