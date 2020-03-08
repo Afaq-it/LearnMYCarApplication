@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
   textStyle: {
     textAlign: 'center',
     fontSize: 30,
-    color: '#3A88E9',
+    color: '#656565',
     paddingBottom: 15,
   },
   imageStyles: { width: 45, height: 45, marginLeft: 5 },

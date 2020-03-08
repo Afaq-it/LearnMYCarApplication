@@ -70,6 +70,6 @@ const styles = StyleSheet.create({
   textStyling: {
     textAlign: 'center',
     fontSize: 35,
-    color: '#3A88E9',
+    color: '#656565',
   },
 });

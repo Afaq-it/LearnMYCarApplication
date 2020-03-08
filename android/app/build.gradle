@@ -122,15 +122,15 @@ android {
     }
     productFlavors {
         ar {
-            resValue 'string', 'app_name', 'LearnMYCarApplication-ar'
+            resValue 'string', 'app_name', 'Learn My C-AR'
             buildConfigField 'String', 'VR_PLATFORM', '"GVR"' //default to GVR
         }
         gvr {
-            resValue 'string', 'app_name', 'LearnMYCarApplication-gvr'
+            resValue 'string', 'app_name', 'Learn My C-AR'
             buildConfigField 'String', 'VR_PLATFORM', '"GVR"'
         }
         ovr {
-            resValue 'string', 'app_name', 'LearnMYCarApplication-ovr'
+            resValue 'string', 'app_name', 'Learn My C-AR'
             applicationIdSuffix '.ovr'
             buildConfigField 'String', 'VR_PLATFORM', '"OVR_MOBILE"'
         }

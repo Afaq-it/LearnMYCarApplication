@@ -3,7 +3,7 @@ import { Component } from 'react';
 import ViewPager from '@react-native-community/viewpager';
 import Dots from 'react-native-dots-pagination';
 import { Image, StyleSheet, Button, View, Text } from 'react-native';
-import logo from 'assets/icon.png';
+import logo from 'assets/app-logo.png';
 
 export default function Home({ navigation }) {
   return (
@@ -32,7 +32,10 @@ class TutorialSlider extends Component {
     return (
       <View style={styles.pageView}>
         <View style={styles.headerSpace}>
-          <Image source={logo} style={{ height: 150, width: 150 }} />
+          <Image
+            source={logo}
+            style={{ height: 150, width: 150, marginTop: 30 }}
+          />
         </View>
         <ViewPager
           style={styles.viewPagerSlider}
@@ -135,7 +138,7 @@ const styles = StyleSheet.create({
   textStyle: {
     textAlign: 'center',
     fontSize: 22,
-    color: '#3A88E9',
+    color: '#656565',
     padding: 50,
   },
 });

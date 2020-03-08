@@ -16,7 +16,7 @@ export default function ARPDFOptions({ route, navigation }) {
           <Text style={styles.anotherView2}>Your vehicle is a</Text>
         </View>
         <View style={styles.someView}>
-          <Text style={{ fontSize: 35, color: '#3A88E9' }}>
+          <Text style={{ fontSize: 35, color: '#656565' }}>
             {previousPrediction} {predictionMake}
           </Text>
         </View>
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#3A88E9',
+    color: '#656565',
   },
   someView: {
     flex: 2,
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#3A88E9',
+    color: '#656565',
   },
   buttonViewMain: {
     flex: 2,
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#3A88E9',
+    color: '#656565',
   },
   bottomButtonView: {
     height: 50,
