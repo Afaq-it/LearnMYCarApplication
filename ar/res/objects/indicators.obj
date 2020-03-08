@@ -1,6 +1,6 @@
 # Object Export From Tinkercad Server 2015
 
-mtllib indicators.mtl
+mtllib indicators-mtl.mtl
 
 o obj_0
 v -40.552 		35.395 		22.598

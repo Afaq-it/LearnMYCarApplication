@@ -32,7 +32,12 @@ export default function ARPDFOptions({ route, navigation }) {
           activeOpacity={0.5}
           onPress={() => {
             navigation.navigate('ARView', { model: predictionMake });
-          }}>
+          }}
+          disabled={
+            predictionMake === 'Fiesta' || predictionMake === 'Golf'
+              ? true
+              : false
+          }>
           <Image
             source={require('assets/ar-icon.png')}
             style={{ height: 50, width: 50, marginBottom: 25 }}
@@ -45,7 +50,12 @@ export default function ARPDFOptions({ route, navigation }) {
           activeOpacity={0.5}
           onPress={() => {
             navigation.navigate('PDFView', { model: predictionMake });
-          }}>
+          }}
+          disabled={
+            predictionMake === 'Polo' || predictionMake === 'Golf'
+              ? true
+              : false
+          }>
           <Image
             source={require('assets/pdf-icon.png')}
             style={{ height: 50, width: 50, marginBottom: 25 }}

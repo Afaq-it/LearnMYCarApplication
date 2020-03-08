@@ -7,7 +7,6 @@ import { StyleSheet } from 'react-native';
 import {
   ViroARScene,
   ViroText,
-  ViroConstants,
   Viro3DObject,
   ViroAmbientLight,
   ViroARTrackingTargets,
@@ -53,6 +52,7 @@ export default class FordFocusAR extends Component {
             <ViroAmbientLight color={'#aaaaaa'} influenceBitMask={1} />
             <Viro3DObject
               source={require('./res/objects/indicators.obj')}
+              resources={[require('./res/objects/indicators-mtl.mtl')]}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
               scale={[0.04, 0.015, 0.04]}
@@ -68,6 +68,7 @@ export default class FordFocusAR extends Component {
             <ViroAmbientLight color={'#aaaaaa'} influenceBitMask={1} />
             <Viro3DObject
               source={require('./res/objects/airbag.obj')}
+              resources={[require('./res/objects/airbag-mtl.mtl')]}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
               scale={[0.04, 0.015, 0.04]}
@@ -83,6 +84,7 @@ export default class FordFocusAR extends Component {
             <ViroAmbientLight color={'#aaaaaa'} influenceBitMask={1} />
             <Viro3DObject
               source={require('./res/objects/hazard.obj')}
+              resources={[require('./res/objects/hazard-mtl.mtl')]}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
               scale={[0.04, 0.015, 0.04]}
@@ -98,6 +100,7 @@ export default class FordFocusAR extends Component {
             <ViroAmbientLight color={'#aaaaaa'} influenceBitMask={1} />
             <Viro3DObject
               source={require('./res/objects/horn.obj')}
+              resources={[require('./res/objects/horn-mtl.mtl')]}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
               scale={[0.04, 0.015, 0.04]}
@@ -113,6 +116,7 @@ export default class FordFocusAR extends Component {
             <ViroAmbientLight color={'#aaaaaa'} influenceBitMask={1} />
             <Viro3DObject
               source={require('./res/objects/wipers.obj')}
+              resources={[require('./res/objects/wipers-mtl.mtl')]}
               rotationPivot={[0, 0, 0]}
               rotation={[-180, -10, -0.4]}
               scale={[0.04, 0.015, 0.04]}

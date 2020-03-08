@@ -1,6 +1,6 @@
 # Object Export From Tinkercad Server 2015
 
-mtllib horn.mtl
+mtllib horn-mtl.mtl
 
 o obj_0
 v -32.447 		35.395 		22.598

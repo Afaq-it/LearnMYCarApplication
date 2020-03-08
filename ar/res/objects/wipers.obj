@@ -1,6 +1,6 @@
 # Object Export From Tinkercad Server 2015
 
-mtllib wipers.mtl
+mtllib wipers-mtl.mtl
 
 o obj_0
 v -36.417 		35.395 		22.598
