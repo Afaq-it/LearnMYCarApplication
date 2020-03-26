@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, ActivityIndicator, View, Text } from 'react-native';
 import AzureConnection from 'util/AzureConnection';
-
+/* Manages the Azure function to call based on the passed parameters. */
 export default function UploadingProcessing({ route, navigation }) {
   const { mode } = route.params;
   if (mode === 'Make') {
@@ -30,7 +30,7 @@ export default function UploadingProcessing({ route, navigation }) {
     </View>
   );
 }
-
+/* Timer used to determine when next text is visible to the user, in an attempt to keep the user updated on the processing progress. */
 class Timer extends Component {
   constructor(props) {
     super(props);
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   textStyle: {
     textAlign: 'center',
     fontSize: 20,
-    color: '#3A88E9',
+    color: '#656565',
     paddingBottom: 50,
   },
   topView: {

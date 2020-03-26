@@ -1,7 +1,6 @@
 'use strict';
-
+/* Take pictures and navigate to the upload processing page with the relevant parameters to enable this screen to determine which Azure Connection API to call. */
 async function takePictureMake(navigation, camera) {
-  console.log('takePictureMake');
   if (camera) {
     await camera
       .takePictureAsync({
@@ -9,7 +8,6 @@ async function takePictureMake(navigation, camera) {
         base64: true,
       })
       .then(data => {
-        console.log(data.uri);
         navigation.navigate('UploadProcessing', {
           dataPass: data.base64,
           mode: 'Make',
@@ -22,7 +20,6 @@ async function takePictureMake(navigation, camera) {
 }
 
 async function takePictureModel(navigation, vehicleMake, camera) {
-  console.log('takePictureModel');
   if (camera) {
     await camera
       .takePictureAsync({
@@ -30,7 +27,6 @@ async function takePictureModel(navigation, vehicleMake, camera) {
         base64: true,
       })
       .then(data => {
-        console.log(data.uri);
         navigation.navigate('UploadProcessing', {
           dataPass: data.base64,
           vehicleMake: vehicleMake,

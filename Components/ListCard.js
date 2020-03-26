@@ -1,3 +1,4 @@
+/* Reusable list component used to display the user upload choices. */
 import * as React from 'react';
 import { StyleSheet, Image, View, Text } from 'react-native';
 
@@ -51,6 +52,6 @@ const styles = StyleSheet.create({
   textStyle: {
     textAlign: 'center',
     fontSize: 20,
-    color: '#3A88E9',
+    color: '#656565',
   },
 });

@@ -1,3 +1,4 @@
+/* Manages the prediction results pages. Imports the Confirmation component with the correct parameters todisplay the right page to the user. */
 import * as React from 'react';
 import { View } from 'react-native';
 import Confirmation from 'Components/Confirmation';
@@ -6,7 +7,6 @@ export default function MakePredictionResults({ route, navigation }) {
   const { imageUrl } = route.params;
   const { prediction } = route.params;
 
-  console.log('imageUrl = ' + imageUrl);
   return (
     <View
       style={{

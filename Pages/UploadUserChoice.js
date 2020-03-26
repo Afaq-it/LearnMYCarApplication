@@ -1,3 +1,4 @@
+/* Allows the user to select the correct vehicle make and then upload the taken image to the Azure portal to better train the model. */
 import * as React from 'react';
 import {
   FlatList,
@@ -11,19 +12,12 @@ import ListCard from 'Components/ListCard';
 import FinalProcessing from 'Pages/FinalProcessing';
 
 export default function ImageUploadProcessing({ route, navigation }) {
-  console.log(Data.imageTagsMakes[0].name);
   const { currentChoice } = route.params;
   const { imageUrl } = route.params;
   const { vehicleMake } = route.params;
 
-  console.log(currentChoice + ' = currentChoice');
-  console.log(imageUrl + ' = imageUrl');
-  console.log(vehicleMake + ' = vehicleMake');
-
   const ListData = getData();
-
-  console.log(ListData);
-
+  /* Determine which list items to display based on passed parameters. */
   function getData() {
     if (currentChoice === false) {
       return Data.imageTagsMakes;
@@ -77,6 +71,6 @@ const styles = StyleSheet.create({
   textStyling: {
     textAlign: 'center',
     fontSize: 35,
-    color: '#3A88E9',
+    color: '#656565',
   },
 });

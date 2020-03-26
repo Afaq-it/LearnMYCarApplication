@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, ActivityIndicator, View, Text } from 'react-native';
 import AzureConnection from 'util/AzureConnection';
-
+/* Page to manage the logic behind which Azure Connection function needs to be called and then the user is directed to the final page in the application. */
 export default function FinalProcessing(
   key,
   currentChoice,
@@ -9,13 +9,9 @@ export default function FinalProcessing(
   imageUrl,
   navigation,
 ) {
-  console.log('UploadProcessing --- currentChoice ==> ' + currentChoice);
-  console.log('UploadProcessing --- imageUrl ==> ' + imageUrl);
-  console.log('UploadProcessing --- key ==> ' + key);
   if (currentChoice === false) {
     AzureConnection.uploadImageForTrainingMake(key, imageUrl, navigation);
   } else if (currentChoice === true) {
-    console.log('UploadProcessing --- vehicleMake ==> ' + vehicleMake);
     if (vehicleMake === 'Volkswagen') {
       AzureConnection.uploadImageForTrainingVwModel(key, imageUrl, navigation);
     } else if (vehicleMake === 'Ford') {

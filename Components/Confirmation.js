@@ -1,3 +1,5 @@
+/* This component manages the confirmation view page the user sees when a prediction is made. The user can choose whether or not their vehicle prediction is correct. If no is pressed then a modal pop-up is displayed to give the user further options on whether they would like to upload their taken image to improve the application model. */
+
 import React, { Component } from 'react';
 import {
   TouchableOpacity,
@@ -13,18 +15,16 @@ class Confirmation extends Component {
     isModalVisible: false,
     currentChoice: false,
   };
-
+  /* Manages the model view. */
   setisModalVisible(visible) {
     this.setState({ isModalVisible: visible });
   }
+  /* Manages the logic to decide which page the parameters user will need on the next screen. */
   setCurrentState(predictionString) {
-    console.log(predictionString);
-    console.log(this.state.currentChoice);
     if (predictionString === 'Ford' || predictionString === 'Volkswagen') {
       null;
     } else {
       this.setState({ currentChoice: true === true });
-      console.log('this is happening');
     }
   }
 
@@ -32,8 +32,6 @@ class Confirmation extends Component {
     const predictionString = this.props.prediction;
     const imageUrl = this.props.imageUrl;
     const navigation = this.props.navig;
-    console.log('ImageUrl = ' + imageUrl);
-    console.log(imageUrl);
     return (
       <View style={styles.mainView}>
         {/* MODAL START */}
@@ -72,12 +70,12 @@ class Confirmation extends Component {
                 </View>
                 <View style={{ width: 20 }} />
                 <View style={styles.modalButtonViewStyles}>
+                  {/* Navigation to the user choice page which will allow the user to select their correct vehicle and upload the image to the Azure Portal. CurrentChoice tells the next screen whether the vehicle make has been predicted or not. */}
                   <TouchableOpacity
                     style={styles.yesButtonStyle}
                     activeOpacity={0.5}
                     onPress={() => {
                       this.setisModalVisible(!this.state.isModalVisible);
-                      console.log(this.state.currentChoice);
                       navigation.navigate('UploadUserChoice', {
                         currentChoice: this.state.currentChoice,
                         vehicleMake: predictionString,
@@ -122,6 +120,7 @@ class Confirmation extends Component {
           </View>
           <View style={{ width: 20 }} />
           <View style={styles.buttonViewStyles}>
+            {/* Logic to determine the destination screen for the user depending on their position on the application. */}
             <TouchableOpacity
               style={styles.yesButtonStyle}
               activeOpacity={0.5}
@@ -150,6 +149,29 @@ class Confirmation extends Component {
               <Text style={styles.buttonTextStyleYes}>Yes</Text>
             </TouchableOpacity>
           </View>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 50,
+            backgroundColor: 'transparent',
+            justifyContent: 'center',
+            paddingTop: 8,
+          }}>
+          <TouchableOpacity
+            style={styles.backButton}
+            activeOpacity={0.5}
+            onPress={() => {
+              navigation.navigate('MakePrediction');
+            }}>
+            <Text
+              style={{
+                color: '#fff',
+                textAlign: 'center',
+              }}>
+              START AGAIN
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -180,6 +202,15 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'transparent',
   },
+  backButton: {
+    flex: 1,
+    height: '100%',
+    alignSelf: 'flex-start',
+    width: '50%',
+    borderRadius: 10,
+    backgroundColor: '#3A88E9',
+    justifyContent: 'center',
+  },
   selectionButtons: {
     height: 10,
     backgroundColor: '#353535',
@@ -203,7 +234,7 @@ const styles = StyleSheet.create({
   textStyle: {
     textAlign: 'center',
     fontSize: 30,
-    color: '#3A88E9',
+    color: '#656565',
     paddingBottom: 15,
   },
   imageStyles: { width: 45, height: 45, marginLeft: 5 },

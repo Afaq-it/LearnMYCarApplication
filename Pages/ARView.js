@@ -6,7 +6,7 @@ export default function ARView({ route, navigation }) {
   const { model } = route.params;
 
   const InitialARScene = getInitialARScene();
-
+  /* Logic to decide which AR mapping file to load in the ARSceneNavigator which delivers the AR functionality. */
   function getInitialARScene() {
     if (model === 'Focus') {
       var scene = require('ar/FordFocusAR');

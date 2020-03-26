@@ -20,7 +20,7 @@ export default class CameraAccess extends Component {
     type: RNCamera.Constants.Type.back,
     processing: null,
   };
-
+  /* If the user has not given permission for the app to access the camera, then request this access. */
   async componentDidMount() {
     try {
       if (!this.state.hasPermission) {
@@ -30,7 +30,7 @@ export default class CameraAccess extends Component {
       console.warn(err);
     }
   }
-
+  /* Request camera permissions. */
   async requestPermissions() {
     try {
       const status = await PermissionsAndroid.request(
@@ -41,10 +41,8 @@ export default class CameraAccess extends Component {
           buttonPositive: 'Ok',
         },
       );
-      console.log('Permission status = ' + status);
       if (status === 'granted') {
         this.setState({ hasPermission: status === 'granted' }); // to set as 'true'
-        console.log('For fucks sake!');
       } else {
         this.setState({ hasPermission: status === 'granted' }); // to set as 'false'
       }
@@ -52,10 +50,9 @@ export default class CameraAccess extends Component {
       console.warn(err);
     }
   }
-
+  /* View returned if permission is denied or pending. View returned if permission given has translucent overlay to guide the user to position the vehicle features within the transparent view. */
   render() {
     const { hasPermission } = this.state;
-    console.log(hasPermission);
     if (hasPermission === null) {
       return (
         <View>
@@ -129,13 +126,11 @@ export default class CameraAccess extends Component {
       );
     }
   }
-
+  /* Handles the take picture function and determines which function to call  based on parameters. */
   _handleclick() {
-    console.log('makePredicted = ' + this.props.makePredicted);
     if (!this.props.makePredicted) {
       this.setState({ processing: true });
       CameraFunctions.takePictureMake(this.props.navig, this.camera);
-      console.log('takePictureMake');
     } else {
       this.setState({ processing: true });
       CameraFunctions.takePictureModel(
@@ -143,7 +138,6 @@ export default class CameraAccess extends Component {
         this.props.vehicleMake,
         this.camera,
       );
-      console.log('takePictureModel');
     }
   }
 }

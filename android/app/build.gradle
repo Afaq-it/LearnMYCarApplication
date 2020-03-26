@@ -93,6 +93,23 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+// function provided by Viktor Eriksson - https://pilloxa.gitlab.io/posts/safer-passwords-in-gradle/
+def getPassword(String keyChain) {
+   def stdout = new ByteArrayOutputStream()
+   def stderr = new ByteArrayOutputStream()
+   exec {
+       commandLine "security", "-q", "find-generic-password", "-s", keyChain, "-w"
+       standardOutput = stdout
+       errorOutput = stderr
+       ignoreExitValue true
+   }
+   //noinspection GroovyAssignabilityCheck
+    stdout.toString().trim()
+}
+
+// accessing keychain password
+def pass_word = getPassword("android_keystore")
+
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
@@ -112,6 +129,17 @@ android {
         versionName "1.0"
         missingDimensionStrategy "react-native-camera", "general"
     }
+    // Code provided by FaceBook/ReactNative - https://reactnative.dev/docs/signed-apk-android
+    signingConfigs {
+        release {
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword pass_word // Change this
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword pass_word // Change this
+            }
+        }
+    }
     splits {
         abi {
             reset()
@@ -122,15 +150,15 @@ android {
     }
     productFlavors {
         ar {
-            resValue 'string', 'app_name', 'LearnMYCarApplication-ar'
+            resValue 'string', 'app_name', 'Learn My C-AR'
             buildConfigField 'String', 'VR_PLATFORM', '"GVR"' //default to GVR
         }
         gvr {
-            resValue 'string', 'app_name', 'LearnMYCarApplication-gvr'
+            resValue 'string', 'app_name', 'Learn My C-AR'
             buildConfigField 'String', 'VR_PLATFORM', '"GVR"'
         }
         ovr {
-            resValue 'string', 'app_name', 'LearnMYCarApplication-ovr'
+            resValue 'string', 'app_name', 'Learn My C-AR'
             applicationIdSuffix '.ovr'
             buildConfigField 'String', 'VR_PLATFORM', '"OVR_MOBILE"'
         }
@@ -139,6 +167,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
