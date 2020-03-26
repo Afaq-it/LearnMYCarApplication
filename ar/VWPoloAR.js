@@ -1,3 +1,4 @@
+/* The AR class that delivers the 3-D objects and their image marker targets. */
 'use strict';
 
 import React, { Component } from 'react';

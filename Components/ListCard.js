@@ -1,3 +1,4 @@
+/* Reusable list component used to display the user upload choices. */
 import * as React from 'react';
 import { StyleSheet, Image, View, Text } from 'react-native';
 

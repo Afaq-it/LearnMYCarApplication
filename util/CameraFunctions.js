@@ -1,5 +1,5 @@
 'use strict';
-
+/* Take pictures and navigate to the upload processing page with the relevant parameters to enable this screen to determine which Azure Connection API to call. */
 async function takePictureMake(navigation, camera) {
   if (camera) {
     await camera

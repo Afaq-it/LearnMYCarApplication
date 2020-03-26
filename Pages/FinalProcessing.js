@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, ActivityIndicator, View, Text } from 'react-native';
 import AzureConnection from 'util/AzureConnection';
-
+/* Page to manage the logic behind which Azure Connection function needs to be called and then the user is directed to the final page in the application. */
 export default function FinalProcessing(
   key,
   currentChoice,

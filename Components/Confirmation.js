@@ -1,3 +1,5 @@
+/* This component manages the confirmation view page the user sees when a prediction is made. The user can choose whether or not their vehicle prediction is correct. If no is pressed then a modal pop-up is displayed to give the user further options on whether they would like to upload their taken image to improve the application model. */
+
 import React, { Component } from 'react';
 import {
   TouchableOpacity,
@@ -13,10 +15,11 @@ class Confirmation extends Component {
     isModalVisible: false,
     currentChoice: false,
   };
-
+  /* Manages the model view. */
   setisModalVisible(visible) {
     this.setState({ isModalVisible: visible });
   }
+  /* Manages the logic to decide which page the parameters user will need on the next screen. */
   setCurrentState(predictionString) {
     if (predictionString === 'Ford' || predictionString === 'Volkswagen') {
       null;
@@ -67,6 +70,7 @@ class Confirmation extends Component {
                 </View>
                 <View style={{ width: 20 }} />
                 <View style={styles.modalButtonViewStyles}>
+                  {/* Navigation to the user choice page which will allow the user to select their correct vehicle and upload the image to the Azure Portal. CurrentChoice tells the next screen whether the vehicle make has been predicted or not. */}
                   <TouchableOpacity
                     style={styles.yesButtonStyle}
                     activeOpacity={0.5}
@@ -116,6 +120,7 @@ class Confirmation extends Component {
           </View>
           <View style={{ width: 20 }} />
           <View style={styles.buttonViewStyles}>
+            {/* Logic to determine the destination screen for the user depending on their position on the application. */}
             <TouchableOpacity
               style={styles.yesButtonStyle}
               activeOpacity={0.5}
@@ -145,6 +150,29 @@ class Confirmation extends Component {
             </TouchableOpacity>
           </View>
         </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 50,
+            backgroundColor: 'transparent',
+            justifyContent: 'center',
+            paddingTop: 8,
+          }}>
+          <TouchableOpacity
+            style={styles.backButton}
+            activeOpacity={0.5}
+            onPress={() => {
+              navigation.navigate('MakePrediction');
+            }}>
+            <Text
+              style={{
+                color: '#fff',
+                textAlign: 'center',
+              }}>
+              START AGAIN
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -173,6 +201,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     backgroundColor: 'transparent',
+  },
+  backButton: {
+    flex: 1,
+    height: '100%',
+    alignSelf: 'flex-start',
+    width: '50%',
+    borderRadius: 10,
+    backgroundColor: '#3A88E9',
+    justifyContent: 'center',
   },
   selectionButtons: {
     height: 10,

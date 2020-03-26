@@ -23,7 +23,7 @@ const predi_url =
   '/classify/iterations/' +
   ITERATION_ID +
   '/url';
-
+/* Handle Make prediction processing. Includes uploading taken image to Imgur hosting then using the return image URL to process the prediction API. */
 async function handleAzure(imageData, navigation) {
   let response1 = await imgurImageUpload(imageData);
   let response2 = await azurePrediction(response1.data.link, predi_url);
@@ -83,7 +83,7 @@ const predi_url_Ford =
   '/classify/iterations/' +
   ITERATION_ID_3 +
   '/url';
-
+/* Handle Model prediction processing. Includes uploading taken image to Imgur hosting then using the return image URL to process the prediction API. */
 async function handleAzureModels(imageData, vehicleMake, navigation) {
   if (vehicleMake === 'Ford') {
     let response1 = await imgurImageUpload(imageData);
@@ -124,7 +124,7 @@ function getImageTags() {
       console.error(error);
     });
 }
-
+/* Handles the Image upload for the vehicle make images taken by the user. */
 const uploadUrlMake =
   END_POINT +
   '/customvision/v3.2/training/projects/' +
@@ -152,6 +152,7 @@ async function uploadImageForTrainingMake(tagKey, imageUrl) {
     });
 }
 
+/* Handles the Image upload for the vehicle Ford Model images taken by the user. */
 const uploadUrlFordModel =
   END_POINT +
   '/customvision/v3.2/training/projects/' +
@@ -180,6 +181,7 @@ async function uploadImageForTrainingFordModel(tagKey, imageUrl) {
     });
 }
 
+/* Handles the Image upload for the vehicle VW Model images taken by the user. */
 const uploadUrlVwModel =
   END_POINT +
   '/customvision/v3.2/training/projects/' +

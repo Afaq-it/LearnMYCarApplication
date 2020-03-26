@@ -1,6 +1,14 @@
+/* The AR and PDF view page, where the user can choose which format of user manual they would like to view. */
 import * as React from 'react';
-import { StyleSheet, TouchableOpacity, Image, View, Text } from 'react-native';
-import logo from 'assets/icon.png';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  View,
+  Text,
+  Alert,
+} from 'react-native';
+import logo from 'assets/app-logo.png';
 
 export default function ARPDFOptions({ route, navigation }) {
   const { predictionMake } = route.params;
@@ -27,17 +35,18 @@ export default function ARPDFOptions({ route, navigation }) {
         </View>
       </View>
       <View style={styles.buttonViewOne}>
+        {/* Logic added to manage the vehicle makes and models that do not have AR mappings or PDF manuals available. */}
         <TouchableOpacity
           style={styles.buttonViewMain}
           activeOpacity={0.5}
           onPress={() => {
-            navigation.navigate('ARView', { model: predictionMake });
-          }}
-          disabled={
             predictionMake === 'Fiesta' || predictionMake === 'Golf'
-              ? true
-              : false
-          }>
+              ? Alert.alert(
+                  'Oops, this is embarassing!',
+                  "Apologies, this feature isn't ready just yet, but watch this space!!",
+                )
+              : navigation.navigate('ARView', { model: predictionMake });
+          }}>
           <Image
             source={require('assets/ar-icon.png')}
             style={{ height: 50, width: 50, marginBottom: 25 }}
@@ -49,13 +58,13 @@ export default function ARPDFOptions({ route, navigation }) {
           style={styles.buttonViewMain}
           activeOpacity={0.5}
           onPress={() => {
-            navigation.navigate('PDFView', { model: predictionMake });
-          }}
-          disabled={
             predictionMake === 'Polo' || predictionMake === 'Golf'
-              ? true
-              : false
-          }>
+              ? Alert.alert(
+                  'Oops, this is embarassing!',
+                  "Apologies, this feature isn't ready just yet, but watch this space!!",
+                )
+              : navigation.navigate('PDFView', { model: predictionMake });
+          }}>
           <Image
             source={require('assets/pdf-icon.png')}
             style={{ height: 50, width: 50, marginBottom: 25 }}
@@ -63,6 +72,7 @@ export default function ARPDFOptions({ route, navigation }) {
           <Text style={styles.buttonTextView}>PDF</Text>
         </TouchableOpacity>
       </View>
+      {/* Allow the user to start again if they feel an error has been made along the process. */}
       <TouchableOpacity
         style={styles.bottomButtonView}
         activeOpacity={0.5}

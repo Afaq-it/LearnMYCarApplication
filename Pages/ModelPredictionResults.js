@@ -1,3 +1,4 @@
+/* Manages the prediction results pages. Imports the Confirmation component with the correct parameters todisplay the right page to the user. */
 import * as React from 'react';
 import { View } from 'react-native';
 import Confirmation from 'Components/Confirmation';

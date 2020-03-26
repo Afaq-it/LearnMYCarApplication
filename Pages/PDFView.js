@@ -1,3 +1,4 @@
+/* Delivers the PDF view for the user to access the PDF manual. */
 import React, { Component } from 'react';
 import {
   Text,
@@ -12,7 +13,7 @@ import Pdf from 'react-native-pdf';
 export default function PDFView({ route, navigation }) {
   const { model } = route.params;
   const sourcePdf = getSourcePdf();
-
+  /* Determine which manual is displayed. */
   function getSourcePdf() {
     if (model === 'Focus') {
       return {
@@ -27,6 +28,7 @@ export default function PDFView({ route, navigation }) {
     }
   }
 
+  /* Keep the user updated on PDF loading progress. */
   return (
     <View style={styles.container}>
       <PDFScreen
@@ -64,6 +66,7 @@ class PDFScreen extends Component {
             justifyContent: 'center',
             paddingTop: 8,
           }}>
+          {/* Go back functionality added to allow user to return to previous page. */}
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => navigation.goBack()}>

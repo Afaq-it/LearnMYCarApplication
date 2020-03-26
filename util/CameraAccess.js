@@ -20,7 +20,7 @@ export default class CameraAccess extends Component {
     type: RNCamera.Constants.Type.back,
     processing: null,
   };
-
+  /* If the user has not given permission for the app to access the camera, then request this access. */
   async componentDidMount() {
     try {
       if (!this.state.hasPermission) {
@@ -30,7 +30,7 @@ export default class CameraAccess extends Component {
       console.warn(err);
     }
   }
-
+  /* Request camera permissions. */
   async requestPermissions() {
     try {
       const status = await PermissionsAndroid.request(
@@ -50,7 +50,7 @@ export default class CameraAccess extends Component {
       console.warn(err);
     }
   }
-
+  /* View returned if permission is denied or pending. View returned if permission given has translucent overlay to guide the user to position the vehicle features within the transparent view. */
   render() {
     const { hasPermission } = this.state;
     if (hasPermission === null) {
@@ -126,7 +126,7 @@ export default class CameraAccess extends Component {
       );
     }
   }
-
+  /* Handles the take picture function and determines which function to call  based on parameters. */
   _handleclick() {
     if (!this.props.makePredicted) {
       this.setState({ processing: true });

@@ -2,7 +2,14 @@ import * as React from 'react';
 import { Component } from 'react';
 import ViewPager from '@react-native-community/viewpager';
 import Dots from 'react-native-dots-pagination';
-import { Image, StyleSheet, Button, View, Text } from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Button,
+  View,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import logo from 'assets/app-logo.png';
 
 export default function Home({ navigation }) {
@@ -37,6 +44,7 @@ class TutorialSlider extends Component {
             style={{ height: 150, width: 150, marginTop: 30 }}
           />
         </View>
+        {/* ViewPager functionality delivers the sliding tutorial view seen on first access to the application. */}
         <ViewPager
           style={styles.viewPagerSlider}
           initialPage={0}
@@ -73,12 +81,21 @@ class TutorialSlider extends Component {
               Are you ready to get started...
             </Text>
             <View style={styles.additionalView}>
-              <Button
-                title="To Camera Set-up  "
+              <TouchableOpacity
+                style={styles.bottomButtonView}
+                activeOpacity={0.5}
                 onPress={() => {
                   this.state.navigation.navigate('MakePrediction');
-                }}
-              />
+                }}>
+                <Text
+                  style={{
+                    fontSize: 17,
+                    fontWeight: 'bold',
+                    color: '#fff',
+                  }}>
+                  TO CAMERA SET UP ...
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </ViewPager>
@@ -102,6 +119,15 @@ const styles = StyleSheet.create({
   additionalView: {
     width: '75%',
     justifyContent: 'center',
+  },
+  bottomButtonView: {
+    height: 50,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#3A88E9',
+    borderRadius: 10,
+    marginTop: 10,
   },
   fontA: {
     color: '#3A88E9',
